@@ -46,22 +46,27 @@ export default {
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
+  			},
+  			neon: {
+  				purple: 'hsl(var(--neon-purple))',
+  				blue: 'hsl(var(--neon-blue))',
+  				pink: 'hsl(var(--neon-pink))'
   			}
   		},
-		fontFamily: {
-			sans: [
-				'Poppins',
-				'ui-sans-serif',
-				'system-ui',
-				'-apple-system',
-				'BlinkMacSystemFont',
-				'Segoe UI',
-				'Roboto',
-				'Helvetica Neue',
-				'Arial',
-				'Noto Sans',
-				'sans-serif'
-			],
+  		fontFamily: {
+  			sans: [
+  				'Montserrat',
+  				'ui-sans-serif',
+  				'system-ui',
+  				'-apple-system',
+  				'BlinkMacSystemFont',
+  				'Segoe UI',
+  				'Roboto',
+  				'Helvetica Neue',
+  				'Arial',
+  				'Noto Sans',
+  				'sans-serif'
+  			],
   			mono: [
   				'IBM Plex Mono',
   				'ui-monospace',
@@ -112,12 +117,32 @@ export default {
   				'100%': {
   					backgroundPosition: '200% 0'
   				}
+  			},
+  			float: {
+  				'0%, 100%': {
+  					transform: 'translateY(0px) rotate(0deg)'
+  				},
+  				'50%': {
+  					transform: 'translateY(-20px) rotate(5deg)'
+  				}
+  			},
+  			'pulse-glow': {
+  				'0%, 100%': {
+  					opacity: '0.5',
+  					transform: 'scale(1)'
+  				},
+  				'50%': {
+  					opacity: '0.8',
+  					transform: 'scale(1.05)'
+  				}
   			}
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-  			shimmer: 'shimmer 3s linear infinite'
+  			shimmer: 'shimmer 3s linear infinite',
+  			float: 'float 6s ease-in-out infinite',
+  			'pulse-glow': 'pulse-glow 4s ease-in-out infinite'
   		},
   		boxShadow: {
   			'2xs': 'var(--shadow-2xs)',
@@ -126,7 +151,10 @@ export default {
   			md: 'var(--shadow-md)',
   			lg: 'var(--shadow-lg)',
   			xl: 'var(--shadow-xl)',
-  			'2xl': 'var(--shadow-2xl)'
+  			'2xl': 'var(--shadow-2xl)',
+  			'neon-purple': '0 0 20px hsl(var(--neon-purple) / 0.5), 0 0 40px hsl(var(--neon-purple) / 0.3)',
+  			'neon-blue': '0 0 20px hsl(var(--neon-blue) / 0.5), 0 0 40px hsl(var(--neon-blue) / 0.3)',
+  			'neon-pink': '0 0 20px hsl(var(--neon-pink) / 0.5), 0 0 40px hsl(var(--neon-pink) / 0.3)'
   		}
   	}
   },

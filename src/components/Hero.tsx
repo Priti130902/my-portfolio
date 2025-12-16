@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Download } from "lucide-react";
 import gsap from "gsap";
 
 const roles = [
@@ -143,7 +143,7 @@ const Hero = () => {
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-background">
+      <div className="hero-parallax absolute inset-0 bg-gradient-to-br from-background via-background to-background">
         {/* Neon gradient orbs */}
         <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-gradient-to-r from-[hsl(var(--neon-purple)/0.3)] to-[hsl(var(--neon-pink)/0.2)] rounded-full blur-[120px] animate-pulse-slow" />
         <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-to-r from-[hsl(var(--neon-blue)/0.3)] to-[hsl(var(--neon-purple)/0.2)] rounded-full blur-[100px] animate-pulse-slow animation-delay-200" />
@@ -216,6 +216,18 @@ const Hero = () => {
               >
                 Contact Me
               </motion.a>
+              <motion.a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Priti_Kumari_Resume.pdf"
+                className="btn-secondary text-foreground inline-flex items-center gap-2"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Download size={18} />
+                Download CV
+              </motion.a>
             </div>
 
             {/* Social Links */}
@@ -266,7 +278,7 @@ const Hero = () => {
                 <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-[hsl(var(--neon-purple)/0.3)] to-[hsl(var(--neon-blue)/0.3)]">
                   <img
                     src="/myimage.jpeg"
-                    alt="Priti Kumari - MERN Stack Developer"
+                    alt="Priti Kumari - Frontend Developer"
                     className="w-full h-full object-cover"
                   />
                 </div>
