@@ -1,5 +1,7 @@
-import { motion } from "framer-motion";
+
 import { Github, Linkedin, Mail, Heart, Twitter, Instagram } from "lucide-react";
+import { motion, useInView, type Variants } from "framer-motion";
+
 
 const Footer = () => {
   const socialLinks = [
@@ -35,7 +37,7 @@ const Footer = () => {
                 className="text-2xl font-bold gradient-text inline-block mb-4"
                 whileHover={{ scale: 1.05 }}
               >
-                Priti.dev
+                Priti
               </motion.a>
               <p className="text-muted-foreground text-sm max-w-xs">
                 Frontend Developer passionate about creating beautiful and functional web experiences.

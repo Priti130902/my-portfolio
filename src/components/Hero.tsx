@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail, Download } from "lucide-react";
 import gsap from "gsap";
 
 const roles = [
   "Frontend Developer",
-  "React Specialist",
-  "UI/UX Enthusiast",
+  "React Developer",
   "MERN Stack Developer",
-  "Web Designer",
 ];
 
 const Hero = () => {
@@ -31,6 +29,7 @@ const Hero = () => {
     }
 
     if (isDeleting && displayedText === "") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsDeleting(false);
       setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
       return;
@@ -177,7 +176,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
             >
               <span className="inline-block px-5 py-2.5 rounded-full glass-card text-sm text-muted-foreground mb-6 border border-[hsl(var(--neon-purple)/0.3)]">
-                👋 Welcome to my portfolio
+                Welcome to my portfolio
               </span>
             </motion.div>
 
@@ -191,7 +190,7 @@ const Hero = () => {
                 {displayedText}
                 <span className="inline-block w-[3px] h-[1.2em] bg-[hsl(var(--neon-purple))] ml-1 animate-pulse align-middle" />
               </span>
-              <span className="hidden sm:inline"> | React | Tailwind | MERN Stack</span>
+              <span className="hidden sm:inline">  MERN Stack Developer</span>
             </p>
 
             <p className="hero-subtitle opacity-0 text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-10">
