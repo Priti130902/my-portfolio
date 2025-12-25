@@ -5,25 +5,25 @@ import gsap from "gsap";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
+    title: "Wave Visas",
     description: "A full-featured online store with cart functionality, payment integration, and admin dashboard built with MERN stack.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+    image: "",
     tags: ["React", "Node.js", "MongoDB","Express"],
     github: "https://github.com",
     live: "https://wave-visas.vercel.app/",
     color: "neon-purple",
   },
   {
-    title: "Task Management App",
+    title: "Asha Learnology",
     description: "Collaborative project management tool with real-time updates, drag-and-drop functionality, and team features.",
-    image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=600&h=400&fit=crop",
+    image: "",
     tags: ["React", "Express", "Socket.io", "PostgreSQL"],
     github: "https://github.com",
     live: "https://ashalearnology.vercel.app/",
     color: "neon-blue",
   },
   {
-    title: "Social Media Dashboard",
+    title: "Task Management App",
     description: "Analytics dashboard for tracking social media metrics with beautiful charts and data visualization.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
     tags: ["Next.js", "TypeScript", "Tailwind", "Chart.js"],
@@ -32,7 +32,7 @@ const projects = [
     color: "neon-pink",
   },
   {
-    title: "Real-time Chat Application",
+    title: "",
     description: "Feature-rich messaging platform with group chats, file sharing, and end-to-end encryption.",
     image: "https://images.unsplash.com/photo-1611746872915-64382b5c2a40?w=600&h=400&fit=crop",
     tags: ["React", "Node.js", "Socket.io", "Redis"],
