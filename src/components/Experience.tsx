@@ -6,7 +6,7 @@ const experiences = [
   {
     title: "Frontend Developer Intern",
     company: "Wave Visas",
-    location: "Remote",
+    location: "",
     duration: "Apr 2025 – Oct 2025",
     description: [
       "Developed 20+ responsive web pages using React.js and Tailwind CSS",
