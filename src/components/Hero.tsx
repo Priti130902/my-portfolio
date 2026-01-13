@@ -216,7 +216,7 @@ const Hero = () => {
                 Contact Me
               </motion.a>
               <motion.a
-                href="/resume.pdf"
+                href="/resume/Full Stack Resume_Priti.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 download="Priti_Kumari_Resume.pdf"
