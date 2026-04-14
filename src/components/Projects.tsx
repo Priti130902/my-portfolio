@@ -1,44 +1,45 @@
 import { useRef, useState } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Layers } from "lucide-react";
 import gsap from "gsap";
 
+// Project data 
 const projects = [
   {
     title: "Wave Visas",
-    description: "A full-featured online store with cart functionality, payment integration, and admin dashboard built with MERN stack.",
-    image: "",
-    tags: ["React", "Node.js", "MongoDB","Express"],
-    github: "https://github.com",
+    description: "Overseas recruitment platform with automated workflow and visa tracking system.",
+    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80", 
+    tags: ["React", "Node.js", "MongoDB", "Tailwind"],
+    github: "https://github.com/Priti130902",
     live: "https://wave-visas.vercel.app/",
-    color: "neon-purple",
+    accent: "from-purple-500 to-pink-500",
   },
   {
     title: "Asha Learnology",
-    description: "Collaborative project management tool with real-time updates, drag-and-drop functionality, and team features.",
-    image: "",
-    tags: ["React", "Express", "Socket.io", "PostgreSQL"],
-    github: "https://github.com",
+    description: "Ed-tech platform with real-time progress tracking and interactive learning modules.",
+    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=80",
+    tags: ["MERN Stack", "Socket.io", "Redux"],
+    github: "https://github.com/Priti130902",
     live: "https://ashalearnology.vercel.app/",
-    color: "neon-blue",
+    accent: "from-blue-500 to-cyan-500",
   },
   {
-    title: "Task Management App",
-    description: "Analytics dashboard for tracking social media metrics with beautiful charts and data visualization.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-    tags: ["Next.js", "TypeScript", "Tailwind", "Chart.js"],
-    github: "https://github.com",
+    title: "Task Management AI",
+    description: "Smart task organizer using AI to prioritize and categorize professional workflows.",
+    image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80",
+    tags: ["Next.js", "TypeScript", "Framer Motion"],
+    github: "https://github.com/Priti130902",
     live: "https://task-app-bice-three.vercel.app/",
-    color: "neon-pink",
+    accent: "from-pink-500 to-orange-500",
   },
   {
-    title: "",
-    description: "Feature-rich messaging platform with group chats, file sharing, and end-to-end encryption.",
-    image: "https://images.unsplash.com/photo-1611746872915-64382b5c2a40?w=600&h=400&fit=crop",
-    tags: ["React", "Node.js", "Socket.io", "Redis"],
-    github: "https://github.com",
-    live: "https://example.com",
-    color: "neon-purple",
+    title: "ShramSetu-AI",
+    description: "AI-powered bridge for employment opportunities and skill verification.",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
+    tags: ["React", "Express", "OpenAI API"],
+    github: "https://github.com/Priti130902",
+    live: "https://www.shramsetuai.com/",
+    accent: "from-emerald-500 to-teal-500",
   },
 ];
 
@@ -47,164 +48,117 @@ const Projects = () => {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const handleCardHover = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+    
+  
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 15;
-    const rotateY = (centerX - x) / 15;
+    const rotateX = (y - centerY) / 10; 
+    const rotateY = (centerX - x) / 10;
 
     gsap.to(card, {
       rotateX: -rotateX,
       rotateY: rotateY,
-      transformPerspective: 1000,
-      duration: 0.3,
+      duration: 0.5,
       ease: "power2.out",
+      transformPerspective: 1000,
     });
   };
 
-  const handleCardLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     gsap.to(e.currentTarget, {
       rotateX: 0,
       rotateY: 0,
-      duration: 0.5,
-      ease: "power2.out",
+      duration: 0.8,
+      ease: "elastic.out(1, 0.5)",
     });
     setHoveredIndex(null);
   };
 
- // only variants part shown (rest stays same)
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.25, 0.8, 0.25, 1],
-    },
-  },
-};
-
-
   return (
-    <section ref={sectionRef} id="projects" className="py-24 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[hsl(var(--neon-purple)/0.08)] rounded-full blur-[120px]" />
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[hsl(var(--neon-blue)/0.08)] rounded-full blur-[100px]" />
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
+    <section ref={sectionRef} id="projects" className="py-24 bg-[#030303] text-white">
+      <div className="container mx-auto px-6">
+        {/* Header */}
+        <div className="mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, x: -20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            className="text-4xl md:text-6xl font-bold mb-4"
           >
-            <span className="inline-block px-4 py-2 rounded-full glass-card text-sm text-primary mb-4 border border-[hsl(var(--neon-purple)/0.3)]">
-              03. Projects
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold mt-4">
-              Some things I've <span className="gradient-text">built</span>
-            </h2>
-            <p className="text-muted-foreground mt-6 max-w-2xl mx-auto">
-              Here are some of my recent projects that showcase my skills and experience
-            </p>
-          </motion.div>
+            Featured <span className="text-purple-500">Work</span>
+          </motion.h2>
+          <div className="h-1 w-20 bg-purple-500 rounded-full" />
+        </div>
 
-          <motion.div 
-            className="grid md:grid-cols-2 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-          >
-            {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="group glass-card rounded-2xl overflow-hidden cursor-pointer"
-                style={{ transformStyle: "preserve-3d" }}
-                onMouseMove={(e) => {
-                  handleCardHover(e, index);
-                  setHoveredIndex(index);
-                }}
-                onMouseLeave={handleCardLeave}
-              >
-                {/* Project Image */}
-                <div className="relative overflow-hidden h-56">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
-                  
-                  {/* Hover overlay */}
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--neon-purple)/0.8)] to-transparent flex items-center justify-center gap-4"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 glass-card rounded-full hover:neon-glow-purple transition-all"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Github size={24} />
-                    </motion.a>
-                    <motion.a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 glass-card rounded-full hover:neon-glow-blue transition-all"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <ExternalLink size={24} />
-                    </motion.a>
-                  </motion.div>
-                </div>
-
-                {/* Project Content */}
-                <div className="p-6" style={{ transform: "translateZ(30px)" }}>
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                    {project.description}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 text-xs font-mono rounded-full bg-muted/50 text-muted-foreground border border-border/50"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+        {/* Grid */}
+        <div className="grid md:grid-cols-2 gap-10">
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: index * 0.1 }}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              onMouseEnter={() => setHoveredIndex(index)}
+              className="group relative bg-[#111] border border-white/10 rounded-3xl overflow-hidden shadow-2xl"
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              {/* Project Image Container */}
+              <div className="relative h-72 w-full overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                {/* Gradient Overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent opacity-90`} />
+                
+                {/* Floating Tech Badges on Image */}
+                <div className="absolute top-4 left-4 flex gap-2">
+                  <div className="px-3 py-1 bg-black/50 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-tighter border border-white/10">
+                    Case Study
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
+              </div>
+
+              {/* Content Section */}
+              <div className="p-8" style={{ transform: "translateZ(50px)" }}>
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-2xl font-bold group-hover:text-purple-400 transition-colors">
+                    {project.title}
+                  </h3>
+                  <div className="flex gap-3">
+                    <a href={project.github} className="text-gray-400 hover:text-white transition-colors">
+                      <Github size={20} />
+                    </a>
+                    <a href={project.live} className="text-gray-400 hover:text-white transition-colors">
+                      <ExternalLink size={20} />
+                    </a>
+                  </div>
+                </div>
+
+                <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="text-[11px] px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-gray-300">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Hover Glow Effect */}
+              <div className={`absolute -bottom-20 -right-20 w-40 h-40 bg-gradient-to-br ${project.accent} blur-[80px] opacity-0 group-hover:opacity-40 transition-opacity duration-500`} />
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
